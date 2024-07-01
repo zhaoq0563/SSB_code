@@ -7,7 +7,7 @@ while True:
         if val.isdigit():
             minimum = eval(val)
             while True:
-                val = input("Enter an integer number (or the word stop to stop) >> ")
+                val = input("Enter an integer number (or the word 'stop' to stop) >> ")
                 if val.isdigit():
                     if eval(val) < minimum:
                         minimum = eval(val)
