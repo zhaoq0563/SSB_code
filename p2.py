@@ -16,9 +16,13 @@ def start_game():
     print("Hello traveler! Welcome to the game of guesses!")
     player_name = input("What is your name? ")
     wanna_play = input("Hi, {}, would you like to play the guessing game? (Enter Yes/No) ".format(player_name))
+    while wanna_play.lower() != "yes" and wanna_play.lower() != "no":
+        print("Oh no!, that is not a valid value. Try again...")
+        wanna_play = input("So, would you like to play the guessing game? (Enter Yes/No) ")
     # Where the show_score function USED to be
+    if wanna_play.lower() == "yes":
+        show_score()
     attempts = 0
-    show_score()
     while wanna_play.lower() == "yes":
         try:
             guess = input("Pick a number between 1 and 10 ")
@@ -30,6 +34,9 @@ def start_game():
                 attempts_list.append(attempts)
                 print("It took you {} attempts".format(attempts))
                 play_again = input("Would you like to play again? (Enter Yes/No) ")
+                while play_again.lower() != "yes" and play_again.lower() != "no":
+                    print("Oh no!, that is not a valid value. Try again...")
+                    play_again = input("Would you like to play again? (Enter Yes/No) ")
                 attempts = 0
                 show_score()
                 random_number = int(random.randint(1, 10))
