@@ -13,7 +13,7 @@ def addition ():
     return [ans,t]
 
 def subtraction ():
-    print("Subtraction");
+    print("Subtraction")
     n = float(input("Enter the number: "))
     t = 0 # Total number enter
     sum = 0
