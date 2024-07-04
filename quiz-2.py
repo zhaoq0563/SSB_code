@@ -1,3 +1,4 @@
+# Sample solution to the programming question 2 in Quiz
 while True:
     n = input("Enter a positive integer n: ")
     if n.isdigit() and eval(n) > 0:

@@ -1,3 +1,4 @@
+# Sample solution to the programming question 1 in Quiz
 while True:
     val = input("Enter an integer number (or the word 'stop' to stop) >> ")
     if val == "stop":
