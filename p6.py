@@ -1,11 +1,81 @@
 import sys
 import random
 
-name = input("What is your name?\n")
+hangman_figures = [
+    """
+       -----
+       |   |
+           |
+           |
+           |
+           |
+    =========
+    """,
+    """
+       -----
+       |   |
+       O   |
+           |
+           |
+           |
+    =========
+    """,
+    """
+       -----
+       |   |
+       O   |
+       |   |
+           |
+           |
+    =========
+    """,
+    """
+       -----
+       |   |
+       O   |
+      /|   |
+           |
+           |
+    =========
+    """,
+    """
+       -----
+       |   |
+       O   |
+      /|\\  |
+           |
+           |
+    =========
+    """,
+    """
+       -----
+       |   |
+       O   |
+      /|\\  |
+      /    |
+           |
+    =========
+    """,
+    """
+       -----
+       |   |
+       O   |
+      /|\\  |
+      / \\  |
+           |
+    =========
+    """
+]
 
+def display_hangman(tries):
+    print(hangman_figures[tries])
+
+name = input("What is your name?\n")
 
 def run():
     print(f"Hello, {name}, let's play hangman!")
+    turns = 0
+    display_hangman(turns)
     print("Start guessing...")
     # Defining the bag of words
     bag_of_words = ['Edureka', "python", "machinelearning", "looping", "whileloop", "devops", "forloop", "deeplearning",
@@ -13,15 +83,15 @@ def run():
                     "exception", "nomalization"]
     word = random.choice(bag_of_words)
     guesses = " "
-    turns = 10
-    while turns > 0:
+    while turns < 6:
         failed = 0
         for char in word:
             if char in guesses:
-                print(char)
+                print(char, end=" ")
             else:
-                print("_")
+                print("_", end=" ")
                 failed += 1
+        print()
         if failed == 0:
             print("You win!")
             choice = input("Would you like to play again? y/n\n")
@@ -34,10 +104,13 @@ def run():
         guess = input("Guess a character:")
         guesses += guess
         if guess not in word:
-            turns -= 1
+            turns += 1
             print("Wrong!")
-            print(f"You have {turns} more guesses.")
-            if turns == 0:
+            print(f"You have {6-turns} more guesses.")
+            display_hangman(turns)
+            print("\n")
+
+            if turns == 6:
                 print("You lose!")
                 choice = input("Would you like to play again? y/n\n")
                 if "y" in choice:
